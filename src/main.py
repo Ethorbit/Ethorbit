@@ -10,7 +10,7 @@ user = "Ethorbit"
 host = "github.com"
 prompt = f"┌──(\033[32m{user}\033[37m@\033[31m{host}\033[37m)-[~]\n└─$"
 
-t = gifos.Terminal(width=500, height=500, xpad=5, ypad=5)
+t = gifos.Terminal(width=500, height=300, xpad=5, ypad=5)
 t.set_font("/usr/share/fonts/truetype/FiraCodeNerdFont-Regular.ttf", 11)
 t.set_prompt(prompt)
 t.gen_prompt(1)
