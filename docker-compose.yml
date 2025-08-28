@@ -1,0 +1,8 @@
+services:
+  ethorbit-awesome-readme:
+    build:
+      context: .
+    env_file: .env
+    volumes:
+      - ./media:/output
+    #entrypoint: sleep 100000
