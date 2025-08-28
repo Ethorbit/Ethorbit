@@ -16,7 +16,7 @@ t.set_font(
     13
 )
 t.toggle_show_cursor(False)
-t.gen_text(f"{user}/{user} README.md tty", row_num=1)
+t.gen_text(f"GitHub README.md tty1", row_num=1)
 t.gen_text("", row_num=2)
 t.clone_frame(5)
 t.toggle_show_cursor(True)
