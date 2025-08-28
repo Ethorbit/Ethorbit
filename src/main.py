@@ -11,17 +11,18 @@ host = "github.com"
 prompt = f"┌──(\033[32m{user}\033[37m@\033[31m{host}\033[37m)-[~]\n└─$"
 
 t = gifos.Terminal(width=500, height=300, xpad=5, ypad=5)
-t.set_font("/usr/share/fonts/truetype/FiraCodeNerdFont-Regular.ttf", 11)
+t.set_font(
+    "/usr/share/fonts/truetype/FiraCodeNerdFontMono-Regular.ttf",
+    13
+)
 t.set_prompt(prompt)
 t.gen_prompt(1)
 t.gen_text("", row_num=1)
 t.gen_typing_text(" whoami", row_num=2, speed=2, contin=True)
-t.gen_prompt(t.curr_row)
 t.set_txt_color("green")
 t.gen_text(user, row_num=3)
-t.gen_text("", row_num=4)
 t.set_txt_color("white")
-t.gen_prompt(5)
+t.gen_prompt(4)
 t.clone_frame(30)
 t.gen_gif()
 
