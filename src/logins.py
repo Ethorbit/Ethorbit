@@ -15,6 +15,7 @@ def tty(t):
         config.PASSWORD, row_num=t.curr_row, speed=1, contin=True
     )
     t.clone_frame(5)
+    t.clear_frame()
 
 
 def sudo(t):

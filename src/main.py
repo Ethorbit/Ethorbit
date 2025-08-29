@@ -19,7 +19,6 @@ t.toggle_show_cursor(False)
 sequences.boot(t)
 t.clone_frame(config.TYPING_DELAY)
 logins.tty(t)
-t.clear_frame()
 t.set_prompt(config.PROMPT)
 t.gen_prompt(t.curr_row)
 t.gen_typing_text(" whoami", row_num=(t.curr_row - 1), speed=2, contin=True)
@@ -30,8 +29,8 @@ t.gen_typing_text(
     f" echo {config.END_MESSAGE}", row_num=(t.curr_row - 1), speed=1, contin=True
 )
 t.gen_text(config.END_MESSAGE, row_num=(t.curr_row + 1))
-t.clone_frame(config.TYPING_DELAY)
 t.gen_prompt(t.curr_row + 1)
+t.clone_frame(config.TYPING_DELAY)
 t.gen_typing_text(
     " sudo shutdown -r now", row_num=(t.curr_row - 1), speed=2, contin=True
 )
