@@ -23,7 +23,6 @@ t.set_font(
 t.toggle_show_cursor(False)
 
 # systemd boot sequence
-# systemd boot sequence
 t.gen_text(
     "[  \033[32mOK\033[0m  ] Reached target github-multi-user.target",
     row_num=t.curr_row
