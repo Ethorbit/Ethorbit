@@ -6,7 +6,6 @@ import gifos
 
 
 def clear(t):
-    t.gen_prompt(t.curr_row)
     t.gen_typing_text(
         " clear",
         row_num=(t.curr_row - 1),
@@ -14,10 +13,10 @@ def clear(t):
         contin=True
     )
     t.clear_frame()
+    t.gen_prompt(t.curr_row + 1)
 
 
 def whoami(t):
-    t.gen_prompt(t.curr_row)
     t.gen_typing_text(
         " whoami",
         row_num=(t.curr_row - 1),
@@ -26,10 +25,10 @@ def whoami(t):
     )
     t.gen_text(config.USER, row_num=(t.curr_row + 1))
     t.clone_frame(1)
+    t.gen_prompt(t.curr_row + 1)
 
 
 def echo(t, message):
-    t.gen_prompt(t.curr_row + 1)
     t.gen_typing_text(
         f" echo {message}",
         row_num=(t.curr_row - 1),
@@ -37,6 +36,7 @@ def echo(t, message):
         contin=True
     )
     t.gen_text(message, row_num=(t.curr_row + 1))
+    t.gen_prompt(t.curr_row + 1)
 
 
 def ghfetch(t):
@@ -48,7 +48,6 @@ def ghfetch(t):
         user_name=config.USER
     )
 
-    t.gen_prompt(t.curr_row + 1)
     t.gen_typing_text(
         f" ghfetch -u {config.USER} -c green",
         row_num=(t.curr_row - 1),
@@ -93,11 +92,11 @@ def ghfetch(t):
         contin=True
     )
     t.set_txt_color()
+    t.gen_prompt(t.curr_row + 5)
     t.clone_frame(50)
 
 
 def reboot(t):
-    t.gen_prompt(t.curr_row + 1)
     t.clone_frame(config.TYPING_DELAY)
     t.gen_typing_text(
         " sudo shutdown -r now", row_num=(t.curr_row - 1), speed=2, contin=True
@@ -105,3 +104,4 @@ def reboot(t):
     logins.sudo(t)
     t.gen_text("", row_num=(t.curr_row + 1))
     sequences.reboot(t)
+    t.gen_prompt(t.curr_row + 1)

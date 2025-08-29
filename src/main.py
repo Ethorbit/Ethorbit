@@ -14,6 +14,7 @@ t.clone_frame(config.TYPING_DELAY)
 logins.tty(t)
 
 # commands.whoami(t)
+t.gen_prompt(1)
 commands.ghfetch(t)
 commands.clear(t)
 commands.echo(t, config.END_MESSAGE)
