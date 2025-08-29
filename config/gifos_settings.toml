@@ -3,7 +3,6 @@ debug = false
 cursor = "_"
 show_cursor = true
 blink_cursor = true
-user_name = "Ethorbit" # for prompt
 fps = 15
 color_scheme = "yoru"
 loop_count = 0 # infinite loop
