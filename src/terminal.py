@@ -9,4 +9,5 @@ def create():
         config.TERMINAL_FONT_PATH,
         config.TERMINAL_FONT_SIZE
     )
+    t.set_prompt(config.PROMPT)
     return t
