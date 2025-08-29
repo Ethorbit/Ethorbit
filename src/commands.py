@@ -13,9 +13,9 @@ def whoami(t):
 def echo(t, message):
     t.gen_prompt(t.curr_row + 1)
     t.gen_typing_text(
-        f" echo {config.END_MESSAGE}", row_num=(t.curr_row - 1), speed=1, contin=True
+        f" echo {message}", row_num=(t.curr_row - 1), speed=1, contin=True
     )
-    t.gen_text(config.END_MESSAGE, row_num=(t.curr_row + 1))
+    t.gen_text(message, row_num=(t.curr_row + 1))
 
 
 def reboot(t):
