@@ -3,6 +3,7 @@ from datetime import datetime
 
 
 def boot(t):
+    t.toggle_show_cursor(False)
     t.gen_text(
         "[  \033[32mOK\033[0m  ] Reached target github-multi-user.target",
         row_num=t.curr_row
@@ -54,9 +55,11 @@ def boot(t):
         ),
         row_num=(t.curr_row + 1)
     )
+    t.toggle_show_cursor(True)
 
 
 def reboot(t):
+    t.toggle_show_cursor(False)
     time_now = datetime.now(tz=config.ZONE)
     time_now_formatted = time_now.strftime("%a %Y-%m-%d %H:%M:%S %Z")
     t.gen_text(
@@ -111,3 +114,4 @@ def reboot(t):
     # Blank: rebooting
     t.clear_frame()
     t.clone_frame(5)
+    t.toggle_show_cursor(True)

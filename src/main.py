@@ -12,7 +12,6 @@ from gifos.utils.load_config import gifos_settings
 # )
 
 t = terminal.create()
-t.toggle_show_cursor(False)
 sequences.boot(t)
 t.clone_frame(config.TYPING_DELAY)
 logins.tty(t)

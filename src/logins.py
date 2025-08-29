@@ -2,6 +2,7 @@ import config
 
 
 def tty(t):
+    t.toggle_show_cursor(False)
     t.clear_frame()
     t.gen_text("GitHub README.md tty1", row_num=(t.curr_row))
     t.clone_frame(10)
