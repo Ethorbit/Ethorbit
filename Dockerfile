@@ -21,7 +21,8 @@ ARG FIRACODE_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4
 RUN curl -L "${FIRACODE_URL}" -o /tmp/firacode.zip && \
     unzip /tmp/firacode.zip -d /tmp/firacode_extracted && \
     mkdir -p /usr/share/fonts/opentype &&\
-    install -Dm644 /tmp/firacode_extracted/*.ttf -t /usr/share/fonts/truetype
+    install -Dm644 /tmp/firacode_extracted/*.ttf -t /usr/share/fonts/truetype &&\
+    python -m pip install --upgrade ascii-magic
 
 COPY --chown=python:python --chmod=0755 ./src src
 COPY --chown=python:python --chmod=0755 ./config .config/gifos

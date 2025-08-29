@@ -7,17 +7,15 @@ import shutil
 import gifos
 from gifos.utils.load_config import gifos_settings
 
-# github_stats = gifos.utils.fetch_github_stats(
-#     user_name="Ethorbit"
-# )
-
 t = terminal.create()
+
 sequences.boot(t)
 t.clone_frame(config.TYPING_DELAY)
 logins.tty(t)
 
-# Logged in, time to enter commands
-commands.whoami(t)
+# commands.whoami(t)
+commands.ghfetch(t)
+commands.clear(t)
 commands.echo(t, config.END_MESSAGE)
 commands.reboot(t)
 
