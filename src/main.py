@@ -119,13 +119,11 @@ t.gen_text(
 )
 
 t.gen_text("The system is going down for reboot NOW!", row_num=(t.curr_row + 1))
-t.gen_text("", row_num=(t.curr_row + 1))
-
 t.clone_frame(5)
 
 t.gen_text(
     "[  \033[32mOK\033[0m  ] Stopping github-desktop.service...",
-    row_num=(t.curr_row + 1)
+    row_num=(t.curr_row + 2)
 )
 t.gen_text(
     "[  \033[32mOK\033[0m  ] Stopping github-actions-runner.service...",
