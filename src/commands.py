@@ -75,12 +75,17 @@ def ghfetch(t, gh_stats):
         contin=True
     )
 
-    row = (t.curr_row + 1)
+    row = t.curr_row + 1
     t.gen_text(gh_avatar_ascii, row_num=row, col_num=1)
     t.set_txt_color("green")
     col = 28
-    t.gen_text(f"User: {config.USER}", row_num=row, col_num=col, contin=True)
-    t.gen_text("--------------", row_num=(t.curr_row + 1), col_num=col, contin=True)
+    t.gen_text(f"User: {config.USER}", row_num=row - 2, col_num=col, contin=True)
+    t.gen_text(
+        "--------------",
+        row_num=(t.curr_row + 1),
+        col_num=col,
+        contin=True
+    )
     t.gen_text(
         f"Followers: {gh_stats.total_followers}",
         row_num=(t.curr_row + 1),

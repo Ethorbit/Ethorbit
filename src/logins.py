@@ -1,4 +1,5 @@
 import config
+from datetime import datetime, timedelta
 
 
 def tty(t):
@@ -17,6 +18,14 @@ def tty(t):
     )
     t.clone_frame(5)
     t.clear_frame()
+    time_now = datetime.now(tz=config.ZONE)
+    time_yesterday = (time_now - timedelta(days=1, hours=3))
+    time_formatted = time_yesterday.strftime("%a %Y-%m-%d %H:%M:%S %Z")
+    t.gen_text(
+        f"Last login: {time_formatted}",
+        row_num=(t.curr_row)
+    )
+    t.gen_text(" ", row_num=(t.curr_row + 1))
 
 
 def sudo(t):
