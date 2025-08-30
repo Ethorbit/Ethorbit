@@ -4,7 +4,6 @@ import logins
 import sequences
 import gifos
 
-
 def clear(t):
     t.gen_typing_text(
         " clear",
@@ -24,7 +23,6 @@ def whoami(t):
         contin=True
     )
     t.gen_text(config.USER, row_num=(t.curr_row + 1))
-    t.clone_frame(1)
     t.gen_prompt(t.curr_row + 1)
 
 
@@ -39,11 +37,33 @@ def echo(t, message):
     t.gen_prompt(t.curr_row + 1)
 
 
-def ghfetch(t):
-    gh_stats = gifos.utils.fetch_github_stats(
-       user_name=config.USER
+def cowsay(t, message):
+    t.gen_typing_text(
+        f" cowsay {message}",
+        row_num=(t.curr_row - 1),
+        speed=1,
+        contin=True
+    )
+    num_lines = len(message) + 5
+    line = ("_" * num_lines)
+    t.gen_text(line, row_num=(t.curr_row + 1))
+    t.gen_text("< " + message + " >", row_num=(t.curr_row + 1))
+    t.gen_text(line, row_num=(t.curr_row + 1))
+    t.gen_text(
+        r"""
+        \\   ^__^
+         \\  (oo)\\_______
+            (__)\\       )\\/\
+                ||----w |
+                ||     ||
+        """,
+        row_num=(t.curr_row + 1)
     )
 
+    t.gen_prompt(t.curr_row + 1)
+
+
+def ghfetch(t, gh_stats):
     gh_avatar_ascii = utils.fetch_github_avatar_ascii(
         user_name=config.USER
     )
@@ -93,11 +113,9 @@ def ghfetch(t):
     )
     t.set_txt_color()
     t.gen_prompt(t.curr_row + 5)
-    t.clone_frame(50)
 
 
 def reboot(t):
-    t.clone_frame(config.TYPING_DELAY)
     t.gen_typing_text(
         " sudo shutdown -r now", row_num=(t.curr_row - 1), speed=2, contin=True
     )
