@@ -7,24 +7,33 @@ import shutil
 import gifos
 from gifos.utils.load_config import gifos_settings
 
-t = terminal.create()
+try:
+    gh_stats = gifos.utils.fetch_github_stats(
+        user_name=config.USER
+    )
 
-sequences.boot(t)
-t.clone_frame(config.TYPING_DELAY)
-logins.tty(t)
+finally:
+    t = terminal.create()
 
-# commands.whoami(t)
-t.gen_prompt(1)
-commands.ghfetch(t)
-commands.clear(t)
-commands.echo(t, config.END_MESSAGE)
-commands.reboot(t)
+    sequences.boot(t)
+    t.clone_frame(config.TYPING_DELAY)
+    logins.tty(t)
+    t.gen_prompt(1)
+    commands.whoami(t)
+    t.clone_frame(1)
+    commands.ghfetch(t, gh_stats)
+    t.clone_frame(20)
+    # commands.clear(t)
+    t.clone_frame(config.TYPING_DELAY)
+    commands.cowsay(t, config.END_MESSAGE)
+    t.clone_frame(20)
+    commands.reboot(t)
 
-t.gen_gif()
-# gif -> Docker volume
-shutil.copy(
-    (
-        gifos_settings.get("files", {}).get("output_gif_name") or "output"
-    ) + ".gif",
-    "/output"
-)
+    t.gen_gif()
+    # gif -> Docker volume
+    shutil.copy(
+        (
+            gifos_settings.get("files", {}).get("output_gif_name") or "output"
+        ) + ".gif",
+        "/output"
+    )
