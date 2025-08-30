@@ -62,6 +62,8 @@ def reboot(t):
     t.toggle_show_cursor(False)
     time_now = datetime.now(tz=config.ZONE)
     time_now_formatted = time_now.strftime("%a %Y-%m-%d %H:%M:%S %Z")
+
+    t.gen_text("    ", row_num=(t.curr_row + 1))
     t.gen_text(
         (
             f"Broadcast message from {config.USER}@{config.HOST} on pts/0"
@@ -70,7 +72,12 @@ def reboot(t):
         row_num=(t.curr_row + 1)
     )
 
-    t.gen_text("The system is going down for reboot NOW!\n", row_num=(t.curr_row + 1))
+    t.gen_text("    ", row_num=(t.curr_row + 1))
+    t.gen_text(
+        "The system is going down for reboot NOW!",
+        row_num=(t.curr_row + 1)
+    )
+    t.gen_text("    ", row_num=(t.curr_row + 1))
     t.clone_frame(5)
 
     t.gen_text(
