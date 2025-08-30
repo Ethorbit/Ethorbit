@@ -70,7 +70,7 @@ def reboot(t):
         row_num=(t.curr_row + 1)
     )
 
-    t.gen_text("The system is going down for reboot NOW!", row_num=(t.curr_row + 1))
+    t.gen_text("The system is going down for reboot NOW!\n", row_num=(t.curr_row + 1))
     t.clone_frame(5)
 
     t.gen_text(
