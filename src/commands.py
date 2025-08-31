@@ -87,11 +87,17 @@ def ghfetch(t, gh_stats):
     t.cursor_to_box(row_num=3, col_num=1, contin=True)
     t.gen_text(
         f"User: {config.USER}",
-        row_num=t.curr_row + 3,
+        row_num=t.curr_row + 2,
         col_num=col,
         contin=True)
     t.gen_text(
         "--------------",
+        row_num=(t.curr_row + 1),
+        col_num=col,
+        contin=True
+    )
+    t.gen_text(
+        f"Rating: {gh_stats.user_rank.level}",
         row_num=(t.curr_row + 1),
         col_num=col,
         contin=True
@@ -103,7 +109,7 @@ def ghfetch(t, gh_stats):
         contin=True
     )
     t.gen_text(
-        f"Total Stars Earnd: {gh_stats.total_stargazers}",
+        f"Total Stars Earned: {gh_stats.total_stargazers}",
         row_num=(t.curr_row + 1),
         col_num=col,
         contin=True
@@ -133,7 +139,7 @@ def ghfetch(t, gh_stats):
 
 def listlanguages(t, gh_stats):
     t.gen_typing_text(
-        " ./list-languages.sh",
+        " head -6 /proc/languages | color.sh",
         row_num=(t.curr_row - 1),
         speed=1,
         contin=True
@@ -141,8 +147,8 @@ def listlanguages(t, gh_stats):
 
     for language, percent in gh_stats.languages_sorted:
         row = t.curr_row + 1
-        t.cursor_to_box(row_num=row, col_num=1)
         color = f"\x1b[{utils.random_color_code()}m"
+        t.cursor_to_box(row_num=row, col_num=1)
 
         t.gen_text(
             f"{color}· {language}\x1b[0m",
