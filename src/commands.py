@@ -3,6 +3,7 @@ import config
 import logins
 import sequences
 import gifos
+import random
 
 def clear(t):
     t.gen_typing_text(
@@ -75,11 +76,20 @@ def ghfetch(t, gh_stats):
         contin=True
     )
 
-    row = t.curr_row + 1
-    t.gen_text(gh_avatar_ascii, row_num=row, col_num=1)
+    t.gen_text(
+        gh_avatar_ascii,
+        row_num=(t.curr_row + 1),
+        col_num=1
+    )
+
     t.set_txt_color("green")
     col = 28
-    t.gen_text(f"User: {config.USER}", row_num=row - 2, col_num=col, contin=True)
+    t.cursor_to_box(row_num=3, col_num=1, contin=True)
+    t.gen_text(
+        f"User: {config.USER}",
+        row_num=t.curr_row + 3,
+        col_num=col,
+        contin=True)
     t.gen_text(
         "--------------",
         row_num=(t.curr_row + 1),
@@ -116,8 +126,38 @@ def ghfetch(t, gh_stats):
         col_num=col,
         contin=True
     )
+
     t.set_txt_color()
-    t.gen_prompt(t.curr_row + 5)
+    t.gen_prompt(t.curr_row + 6)
+
+
+def listlanguages(t, gh_stats):
+    t.gen_typing_text(
+        " ./list-languages.sh",
+        row_num=(t.curr_row - 1),
+        speed=1,
+        contin=True
+    )
+
+    for language, percent in gh_stats.languages_sorted:
+        row = t.curr_row + 1
+        t.cursor_to_box(row_num=row, col_num=1)
+        color = f"\x1b[{utils.random_color_code()}m"
+
+        t.gen_text(
+            f"{color}· {language}\x1b[0m",
+            row_num=row,
+            contin=True
+        )
+
+        t.gen_text(
+            f"{color}{percent}%\x1b[0m",
+            row_num=row,
+            col_num=20,
+            contin=True
+        )
+
+    t.gen_prompt(t.curr_row + 1)
 
 
 def reboot(t):

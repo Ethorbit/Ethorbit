@@ -1,4 +1,9 @@
+import random
 from ascii_magic import AsciiArt
+
+
+def random_color_code():
+    return random.randint(31, 36)
 
 
 def fetch_github_avatar_ascii(user_name: str):
