@@ -139,7 +139,7 @@ def ghfetch(t, gh_stats):
 
 def listlanguages(t, gh_stats):
     t.gen_typing_text(
-        " head -6 /proc/languages | color.sh",
+        " head -n 6 /proc/languages | color.sh",
         row_num=(t.curr_row - 1),
         speed=1,
         contin=True
