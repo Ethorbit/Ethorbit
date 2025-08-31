@@ -17,6 +17,8 @@ if gh_stats is None:
     Is {config.USER} a valid Github user?
     ''')
 
+print(gh_stats)
+
 t = terminal.create()
 sequences.boot(t)
 t.clone_frame(config.TYPING_DELAY)
@@ -26,8 +28,9 @@ t.clone_frame(config.TYPING_DELAY)
 commands.whoami(t)
 t.clone_frame(config.TYPING_DELAY)
 commands.ghfetch(t, gh_stats)
+t.clone_frame(40)
+commands.listlanguages(t, gh_stats)
 t.clone_frame(20)
-t.clone_frame(config.TYPING_DELAY)
 commands.cowsay(t, config.END_MESSAGE)
 t.clone_frame(15)
 commands.reboot(t)
