@@ -15,7 +15,7 @@ jobs:
         run: echo "GITHUB_TOKEN=${{secrets.README_TERMINAL_TOKEN}}" > .env
 
       - name: Build
-        run: docker compose up --build
+        run: UID=$(id -u) GID=$(id -g) docker compose up --build
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v6
