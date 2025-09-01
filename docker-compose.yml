@@ -1,8 +1,10 @@
 services:
   ethorbit-awesome-readme:
-    user: "${UID}:${GID}"
     build:
       context: .
+      args:
+        UID: "${UID}"
+        GID: "${GID}"
     env_file: .env
     volumes:
       - ./media:/output
