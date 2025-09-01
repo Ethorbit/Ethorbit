@@ -1,5 +1,6 @@
 services:
   ethorbit-awesome-readme:
+    user: "${UID}:${GID}"
     build:
       context: .
     env_file: .env
