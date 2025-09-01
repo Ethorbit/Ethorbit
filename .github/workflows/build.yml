@@ -1,0 +1,23 @@
+name: update
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create .env
+        run: echo "GITHUB_TOKEN=${{secrets.github-readme-terminal-token}}" > .env
+
+      - name: Build
+        run: docker compose up --build
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v6
+        with:
+          file_pattern: "media/output.gif"
